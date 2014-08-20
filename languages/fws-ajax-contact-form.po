@@ -1,0 +1,87 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FWS Ajax Contact Form\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-19 13:10+0100\n"
+"PO-Revision-Date: 2014-08-19 13:10+0100\n"
+"Last-Translator: Olaf Lederer <olaf.lederer@gmail.com>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: test.php:106
+msgid "Loading..."
+msgstr ""
+
+#: test.php:107
+msgid "At least one of the form fields is empty."
+msgstr ""
+
+#: test.php:108
+msgid "Error, did you mean"
+msgstr ""
+
+#: test.php:109
+msgid "The entered mail address is invalid."
+msgstr ""
+
+#: test.php:110
+msgid "Error occurred, unable to validate your email address."
+msgstr ""
+
+#: test.php:130
+msgid "Name"
+msgstr ""
+
+#: test.php:134
+msgid "Email address"
+msgstr ""
+
+#: test.php:138
+msgid "Message"
+msgstr ""
+
+#: test.php:144
+msgid "Submit"
+msgstr "Submit Form"
+
+#: test.php:157
+msgid "All fields are required to enter."
+msgstr ""
+
+#: test.php:160
+msgid "Verification error, try again."
+msgstr "Verification error, please try again."
+
+#: test.php:164
+msgid "A message from your website's contact form"
+msgstr ""
+
+#: test.php:166
+#, php-format
+msgid "%1$sIP address: %2$s"
+msgstr ""
+
+#: test.php:167
+#, php-format
+msgid "%1$sSender's name: %2$s"
+msgstr ""
+
+#: test.php:168
+#, php-format
+msgid "%1$sE-mail address: %2$s"
+msgstr "%1$sEmail address: %2$s"
+
+#: test.php:169
+msgid "Thanks, for the message. We will respond as soon as possible."
+msgstr "Thanks, for the message. We will respond within 48 hours."
+
+#: test.php:182
+msgid "Some errors occurred."
+msgstr ""
+
