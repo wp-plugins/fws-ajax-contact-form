@@ -1,14 +1,30 @@
 <?php
 /*
 Plugin Name: Ajax Contact Form
+Version: 1.0.1
 Plugin URI: http://www.finalwebsites.com/ajax-contact-form-wordpress/
-Description: This plugin creates an Ajax contact form with email address validation, powered by the Mailgun API system.
+Description: Creates an Ajax contact form with email address validation using the Mailgun API system.
 Author: Olaf Lederer
-Version: 1.0
 Author URI: http://www.finalwebsites.com/
-License: GPLv2 or later
 Text Domain: fws-ajax-contact-form
 Domain Path: /languages/
+License: GPL v3
+
+Ajax Contact Form
+Copyright (C) 2014, Olaf Lederer - olaf@finalwebsites.com
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 add_action( 'plugins_loaded', 'FWSACF_load_textdomain' );
@@ -36,7 +52,7 @@ function FWSACF_options_page() {
 
 	echo '
 	<div class="wrap">
-		<h2>Ajax Contact Form <a href="http://www.finalwebsites.com/" target="_blank">by finalwebsites</a></h2>
+		<h2>Ajax Contact Form by finalwebsites</h2>
 		<p>Configure your contact form options below. If you like to change the (error) messages and/or labels visible via the web form, please use a localization plugin (f.e. <a href="https://wordpress.org/plugins/codestyling-localization/" target="_blank">Codestyling Localization</a>).</p>
 		<p>You need a valid API key for the email address validation feature. Register a free <a href="https://mailgun.com/signup">Mailgun account</a> to get your API key.</p>';
 
@@ -91,8 +107,11 @@ function FWSACF_options_page() {
 			<p class="submit">
 				<input class="button-primary" type="submit" value="Save Changes">
 			</p>
-		</form>
-
+		</form>';
+		if (get_option('fwsacf-apiKey')) echo '
+		<h3>How to use?</h3>
+		<p>Add the following short code into your page. Use the attribute "emailsubject" to overwrite the setting for the mail subject from this page.</p>
+		<p><code>[FWSAjaxContactForm]</code> or <code>[FWSAjaxContactForm emailsubject="My email subject"]</code></p>
 	</div>';
 }
 
@@ -123,11 +142,16 @@ add_action('wp_enqueue_scripts', 'FWS_contactform_add_script');
 
 
 
-function FWS_createAjaxContactForm() {
+function FWS_createAjaxContactForm($atts) {
+	extract( shortcode_atts(
+		array(
+			'emailsubject' => ''
+		), $atts )
+	);
 	if (!get_option('fwsacf-apiKey')) {
 		return '<p>Please enter the Mailgun API key!</p>';
 	} else {
-		return '
+		$html = '
 	<form id="contactform" role="form">
 		<div class="form-group">
 			<label for="name">'.__( 'Name' , 'fws-ajax-contact-form' ).'</label>
@@ -141,13 +165,17 @@ function FWS_createAjaxContactForm() {
 			<label for="message">'.__( 'Message' , 'fws-ajax-contact-form' ).'</label>
 			<textarea class="form-control" name="message" id="message" tabindex="3" rows="8"></textarea>
 		</div>
-		<div class="form-group text-right">
+		<div class="form-group text-right">';
+		if ($emailsubject != '') $html .= '
+			<input type="hidden" name="mailsubject" value="'.esc_attr($emailsubject).'" />';
+		$html .= '
 			<input type="hidden" name="action" value="contactform_action" />
 			'.wp_nonce_field('ajax_contactform', '_acf_nonce', true, false).'
 			<button class="btn btn-primary btn-sm" id="contactbutton" type="button">'.__( 'Submit' , 'fws-ajax-contact-form' ).'</button>
 		</div>
 	</form>
 	<div id="contact-msg" class="error-message"></div>';
+		return $html;
 	}
 }
 add_shortcode('FWSAjaxContactForm', 'FWS_createAjaxContactForm');
@@ -159,12 +187,16 @@ function FWS_ajax_contactform_action_callback() {
 	if (empty($_POST['name']) || empty($_POST['email']) || empty($_POST['message'])) {
 		$error = __( 'All fields are required to enter.' , 'fws-ajax-contact-form' );
 	} else {
-		if (!wp_verify_nonce($_POST['_acf_nonce'], $_POST['action'])) {
+		if (!wp_verify_nonce($_POST['_acf_nonce'], 'ajax_contactform')) {
 			$error = __( 'Verification error, try again.' , 'fws-ajax-contact-form' );
 		} else {
 			$name = filter_var($_POST['name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
 			$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-			$subject = (get_option('fwsacf-emailsubject')) ? get_option('fwsacf-emailsubject') : __( 'A message from your website\'s contact form' , 'fws-ajax-contact-form' );
+			if (!empty($_POST['mailsubject'])) {
+				$subject = filter_var($_POST['mailsubject'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
+			} else {
+				$subject = (get_option('fwsacf-emailsubject')) ? get_option('fwsacf-emailsubject') : __( 'A message from your website\'s contact form' , 'fws-ajax-contact-form' );
+			}
 			$message = esc_attr($_POST['message']);
 			$message .= sprintf(__( '%1$sIP address: %2$s' , 'fws-ajax-contact-form' ), PHP_EOL.PHP_EOL, $_SERVER['REMOTE_ADDR']);
 			$message .= sprintf(__( '%1$sSender\'s name: %2$s' , 'fws-ajax-contact-form' ), PHP_EOL, $name);
@@ -190,6 +222,6 @@ function FWS_ajax_contactform_action_callback() {
 	$resp = array('status' => $status, 'errmessage' => $error);
 	wp_send_json($resp);
 }
-add_action( 'wp_ajax_contactform_action', 'ajax_contactform_action_callback' );
-add_action( 'wp_ajax_nopriv_contactform_action', 'ajax_contactform_action_callback' );
+add_action( 'wp_ajax_contactform_action', 'FWS_ajax_contactform_action_callback' );
+add_action( 'wp_ajax_nopriv_contactform_action', 'FWS_ajax_contactform_action_callback' );
 
