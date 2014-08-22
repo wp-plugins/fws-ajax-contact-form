@@ -28,6 +28,13 @@ jQuery(document).ready(function($) {
 									$('#contactform')[0].reset();
 								}
 								$('#contact-msg').html(response.errmessage);
+								if (ajax_object.googleanalytics) {
+									_gaq.push(['_trackPageview', ajax_object.googleanalytics]);
+								}
+								if (ajax_object.clickyanalytics) {
+									clicky.goal( ajax_object.clickyanalytics );
+									clicky.pause( 500 );
+								}
 							}
 						});
 					} else {

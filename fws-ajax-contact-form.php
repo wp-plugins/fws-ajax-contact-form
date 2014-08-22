@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Ajax Contact Form
-Version: 1.0.1
+Version: 1.0.2
 Plugin URI: http://www.finalwebsites.com/ajax-contact-form-wordpress/
 Description: Creates an Ajax contact form with email address validation using the Mailgun API system.
 Author: Olaf Lederer
@@ -46,6 +46,8 @@ function register_FWSACF_setting() {
 	register_setting( 'FWSACF_options', 'fwsacf-emailsubject' );
 	register_setting( 'FWSACF_options', 'fwsacf-apiKey' );
 	register_setting( 'FWSACF_options', 'fwsacf-include-css' );
+	register_setting( 'FWSACF_options', 'fwsacf-googleanalytics' );
+	register_setting( 'FWSACF_options', 'fwsacf-clickyanalytics' );
 }
 
 function FWSACF_options_page() {
@@ -67,21 +69,21 @@ function FWSACF_options_page() {
 					<th scope="row"> Email address (to): </th>
 					<td>
 						<input class="regular-text" type="text" placeholder="" value="'.esc_attr( get_option('fwsacf-mailto') ).'" name="fwsacf-mailto">
-						<p class="description">The email addres where you like to receive the messages.</p>
+						<p class="description">The email address where you like to receive the messages.</p>
 					</td>
 				</tr>
 				<tr valign="top">
 					<th scope="row"> Email address (from): </th>
 					<td>
 						<input class="regular-text" type="text" placeholder="" value="'.esc_attr( get_option('fwsacf-emailfrom') ).'" name="fwsacf-emailfrom">
-						<p class="description">The email addres which is the sender, f.e. mail@yoursite.com.</p>
+						<p class="description">The email address which is the sender, f.e. mail@yoursite.com.</p>
 					</td>
 				</tr>
 				<tr valign="top">
 					<th scope="row"> Email subject: </th>
 					<td>
 						<input class="regular-text" type="text" placeholder="" value="'.esc_attr( get_option('fwsacf-emailsubject') ).'" name="fwsacf-emailsubject">
-						<p class="description">The email subject for each message sent by the contact form</p>
+						<p class="description">The email subject for each message sent by the contact form.</p>
 					</td>
 				</tr>
 				<tr valign="top">
@@ -102,6 +104,20 @@ function FWSACF_options_page() {
 						</label>
 					</td>
 				</tr>
+				<tr valign="top">
+					<th scope="row"> Track page views in Google Analytics </th>
+					<td>
+						<input class="regular-text" type="text" placeholder="" value="'.esc_attr( get_option('fwsacf-googleanalytics') ).'" name="fwsacf-googleanalytics">
+						<p class="description">Track a page view in Google analytics after the form is submitted (f.e. /contact/submitted.html).</p>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"> Track goals in Clicky </th>
+					<td>
+						<input class="regular-text" type="text" placeholder="" value="'.esc_attr( get_option('fwsacf-clickyanalytics') ).'" name="fwsacf-clickyanalytics">
+						<p class="description">Add here the goal ID for a manual goal you\'ve already defined in Clicky (check the FAQ for information).</p>
+					</td>
+				</tr>
 			</table>
 
 			<p class="submit">
@@ -110,7 +126,7 @@ function FWSACF_options_page() {
 		</form>';
 		if (get_option('fwsacf-apiKey')) echo '
 		<h3>How to use?</h3>
-		<p>Add the following short code into your page. Use the attribute "emailsubject" to overwrite the setting for the mail subject from this page.</p>
+		<p>Add the following shortcode into your page. Use the shortcode attribute "emailsubject" to overwrite the setting for the mail subject from this page.</p>
 		<p><code>[FWSAjaxContactForm]</code> or <code>[FWSAjaxContactForm emailsubject="My email subject"]</code></p>
 	</div>';
 }
@@ -125,6 +141,8 @@ function FWS_contactform_add_script() {
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
 				'mailgun_key' => get_option('fwsacf-apiKey'),
 				'plugin_base_path' => plugin_dir_url(__FILE__),
+				'googleanalytics' => get_option('fwsacf-googleanalytics'),
+				'clickyanalytics' => get_option('fwsacf-clickyanalytics'),
 				'js_alt_loading' => __( 'Loading...', 'fws-ajax-contact-form' ),
 				'js_msg_empty_fields' => __( 'At least one of the form fields is empty.', 'fws-ajax-contact-form' ),
 				'js_msg_did_you_mean' => __( 'Error, did you mean', 'fws-ajax-contact-form' ),
