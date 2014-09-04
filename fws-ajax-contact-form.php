@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Ajax Contact Form
-Version: 1.0.2
+Version: 1.0.2.1
 Plugin URI: http://www.finalwebsites.com/ajax-contact-form-wordpress/
 Description: Creates an Ajax contact form with email address validation using the Mailgun API system.
 Author: Olaf Lederer
