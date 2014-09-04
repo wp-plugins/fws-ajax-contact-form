@@ -95,7 +95,7 @@ function FWSACF_options_page() {
 				</tr>';
 				$checked = (get_option('fwsacf-include-css')) ? ' checked="checked"' : '';
 				echo '
-				<tr>
+				<tr valign="top">
 					<th scope="row"> Include CSS </th>
 					<td>
 						<label for="fwsacf-include-css">
@@ -104,6 +104,9 @@ function FWSACF_options_page() {
 						</label>
 					</td>
 				</tr>
+			</table>
+			<h4>Don\'t use the fields below if your Google Analytics or Clicky JavaScript snippet isn\'t installed!</h4>
+			<table class="form-table">
 				<tr valign="top">
 					<th scope="row"> Track page views in Google Analytics </th>
 					<td>

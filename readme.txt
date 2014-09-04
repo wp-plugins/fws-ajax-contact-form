@@ -3,10 +3,10 @@ Contributors: finalwebsites
 Donate link: http://www.finalwebsites.com/
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
-Tags: email, contact, forms, api, ajax, contact form, ajax contact form, email form, shortcode, clicky, Google Analytics, tracking
+Tags: contact form, ajax contact form, email, contact, forms, api, ajax, email form, shortcode, clicky, Google Analytics, tracking
 Requires at least: 3.0
-Tested up to: 3.9.2
-Stable tag: 1.0.2
+Tested up to: 4.0
+Stable tag: 1.0.2.1
 
 Creates an Ajax contact form with email address validation using the Mailgun API system.
 
@@ -51,7 +51,7 @@ No, I use the external email address validation service because it's very import
 
 = How to add a manual goal in Clicky? =
 
-If you use a premium plan in Clicky it's possible to track Goals.
+If you use a Clicky premium plan  it's possible to track Goals.
 
 1. In Clicky click on Goals > Setup > Create a new goal.
 1. Enter a name for the goal
@@ -64,6 +64,15 @@ If you use a premium plan in Clicky it's possible to track Goals.
 
 
 == Changelog ==
+
+
+= 1.0.2.1 =
+
+* Other
+	* Added icons for the plugin repository
+	* The plugin is tested for WordPress 4.0
+	* Added instructions when using the track goal feature
+	* Added an updated screenshot for the plugin settings
 
 = 1.0.2 =
 
