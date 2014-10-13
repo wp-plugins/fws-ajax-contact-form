@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FWS Ajax Contact Form\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-19 13:10+0100\n"
-"PO-Revision-Date: 2014-08-19 13:10+0100\n"
-"Last-Translator: Olaf Lederer <olaf.lederer@gmail.com>\n"
+"POT-Creation-Date: 2014-10-13 09:37+0100\n"
+"PO-Revision-Date: 2014-10-13 09:39+0100\n"
+"Last-Translator: Olaf Lederer <olaf@finalwebsites.com>\n"
 "Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -12,76 +12,169 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-0: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk\n"
 
-#: test.php:106
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:58
+#, php-format
+msgid "Configure your contact form options below. If you like to change the (error) messages and/or labels visible via the web form, please use a localization plugin (f.e. <a href=\"%s\" target=\"_blank\">Codestyling Localization</a>)."
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:59
+#, php-format
+msgid "Eenter a valid Mailgun API key to use the advanced email address validation feature. Register a free <a href=\"%s\">Mailgun account</a> to get your API key."
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:65
+msgid "Configuration"
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:69
+msgid " Email address (to): "
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:72
+msgid "The email address where you like to receive the messages."
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:76
+msgid " Email address (from): "
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:79
+msgid "The email address which is the sender, f.e. mail@yoursite.com."
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:83
+msgid " Email subject(s): "
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:86
+msgid "The email subject for each message sent by the contact form. Add multiple subject rows to create a SELECT menu for your contact form."
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:90
+msgid " API Key "
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:93
+msgid "Your Mailgun Public API key, which starts \"pubkey-\". Keep this field empty to disable that feature."
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:99
+msgid " Include CSS "
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:103
+msgid "Include our stylesheet for your contact form"
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:108
+msgid "Don't use the fields below if your Google Analytics or Clicky JavaScript snippet isn't installed!"
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:111
+msgid " Track page views in Google Analytics "
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:114
+msgid "Track a page view in Google analytics after the form is submitted (f.e. /contact/submitted.html)."
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:118
+msgid " Track goals in Clicky "
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:121
+msgid "Add here the goal ID for a manual goal you've already defined in Clicky (check the FAQ for information)."
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:127
+msgid "Save Changes"
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:130
+msgid "How to use?"
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:131
+msgid "Add the following shortcode into your page. Use the shortcode attribute \"emailsubject\" to overwrite the setting for the mail subject from this page. Enter multiple subject values, divided by \"|\" (pipe) symbols, to create a SELECT menu."
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:147
 msgid "Loading..."
 msgstr ""
 
-#: test.php:107
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:148
 msgid "At least one of the form fields is empty."
 msgstr ""
 
-#: test.php:108
-msgid "Error, did you mean"
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:149
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:233
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:240
+msgid "The entered email address isn't valid."
 msgstr ""
 
-#: test.php:109
-msgid "The entered mail address is invalid."
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:169
+msgid "Please enter the Mailgun API key!"
 msgstr ""
 
-#: test.php:110
-msgid "Error occurred, unable to validate your email address."
-msgstr ""
-
-#: test.php:130
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:174
 msgid "Name"
 msgstr ""
 
-#: test.php:134
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:178
 msgid "Email address"
 msgstr ""
 
-#: test.php:138
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:186
+msgid "Subject"
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:202
 msgid "Message"
 msgstr ""
 
-#: test.php:144
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:208
 msgid "Submit"
 msgstr "Submit Form"
 
-#: test.php:157
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:231
+#, php-format
+msgid "Invalid email address, did you mean \"%s\""
+msgstr ""
+
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:250
 msgid "All fields are required to enter."
 msgstr ""
 
-#: test.php:160
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:253
 msgid "Verification error, try again."
 msgstr "Verification error, please try again."
 
-#: test.php:164
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:262
 msgid "A message from your website's contact form"
 msgstr ""
 
-#: test.php:166
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:269
 #, php-format
 msgid "%1$sIP address: %2$s"
 msgstr ""
 
-#: test.php:167
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:270
 #, php-format
 msgid "%1$sSender's name: %2$s"
 msgstr ""
 
-#: test.php:168
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:271
 #, php-format
 msgid "%1$sE-mail address: %2$s"
 msgstr "%1$sEmail address: %2$s"
 
-#: test.php:169
-msgid "Thanks, for the message. We will respond as soon as possible."
-msgstr "Thanks, for the message. We will respond within 48 hours."
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:272
+msgid "Thanks, for your message. We will respond as soon as possible."
+msgstr "Thank you for your message. We will respond within 48 hours."
 
-#: test.php:182
-msgid "Some errors occurred."
+#: /home/olaf/Dropbox/MyPlugins/fws-ajax-contact-form/trunk/fws-ajax-contact-form.php:285
+msgid "The script can't send this email message."
 msgstr ""
 

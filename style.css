@@ -14,7 +14,7 @@
     padding: 6px 12px;
     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
     vertical-align: middle;
-    width: 96%;
+    width:100%;
     margin-bottom: 8px;
 }
 .input-sm {
@@ -55,5 +55,6 @@ label {
     text-align: right;
 }
 .error-message {
+	margin-top:15px;
 	font-weight:bold;
 }

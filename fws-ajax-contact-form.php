@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Ajax Contact Form
-Version: 1.0.2.1
+Version: 1.0.3
 Plugin URI: http://www.finalwebsites.com/ajax-contact-form-wordpress/
-Description: Creates an Ajax contact form with email address validation using the Mailgun API system.
+Description: An easy to use Ajax contact form with (optional) advanced email address validation provided by Mailgun.
 Author: Olaf Lederer
 Author URI: http://www.finalwebsites.com/
 Text Domain: fws-ajax-contact-form
@@ -11,7 +11,7 @@ Domain Path: /languages/
 License: GPL v3
 
 Ajax Contact Form
-Copyright (C) 2014, Olaf Lederer - olaf@finalwebsites.com
+Copyright (C) 2014, Olaf Lederer - http://www.finalwebsites.com/contact/
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -55,82 +55,81 @@ function FWSACF_options_page() {
 	echo '
 	<div class="wrap">
 		<h2>Ajax Contact Form by finalwebsites</h2>
-		<p>Configure your contact form options below. If you like to change the (error) messages and/or labels visible via the web form, please use a localization plugin (f.e. <a href="https://wordpress.org/plugins/codestyling-localization/" target="_blank">Codestyling Localization</a>).</p>
-		<p>You need a valid API key for the email address validation feature. Register a free <a href="https://mailgun.com/signup">Mailgun account</a> to get your API key.</p>';
+		<p>'.sprintf ( __( 'Configure your contact form options below. If you like to change the (error) messages and/or labels visible via the web form, please use a localization plugin (f.e. <a href="%s" target="_blank">Codestyling Localization</a>).', 'fws-mailchimp-subscribe' ), esc_url( 'https://wordpress.org/plugins/codestyling-localization/' ) ).'</p>
+		<p>'.sprintf ( __( 'Eenter a valid Mailgun API key to use the advanced email address validation feature. Register a free <a href="%s">Mailgun account</a> to get your API key.', 'fws-mailchimp-subscribe' ), esc_url( 'https://mailgun.com/signup' ) ).'</p>';
 
 	echo '
 		<form action="options.php" method="post">';
 	settings_fields( 'FWSACF_options' );
 	echo '
-			<h3>Configuration</h3>
+			<h3>'.__( 'Configuration', 'fws-ajax-contact-form' ).'</h3>
 
 			<table class="form-table">
 				<tr valign="top">
-					<th scope="row"> Email address (to): </th>
+					<th scope="row">'.__( ' Email address (to): ', 'fws-ajax-contact-form' ).'</th>
 					<td>
 						<input class="regular-text" type="text" placeholder="" value="'.esc_attr( get_option('fwsacf-mailto') ).'" name="fwsacf-mailto">
-						<p class="description">The email address where you like to receive the messages.</p>
+						<p class="description">'.__( 'The email address where you like to receive the messages.', 'fws-ajax-contact-form' ).'</p>
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"> Email address (from): </th>
+					<th scope="row">'.__( ' Email address (from): ', 'fws-ajax-contact-form' ).'</th>
 					<td>
 						<input class="regular-text" type="text" placeholder="" value="'.esc_attr( get_option('fwsacf-emailfrom') ).'" name="fwsacf-emailfrom">
-						<p class="description">The email address which is the sender, f.e. mail@yoursite.com.</p>
+						<p class="description">'.__( 'The email address which is the sender, f.e. mail@yoursite.com.', 'fws-ajax-contact-form' ).'</p>
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"> Email subject: </th>
+					<th scope="row">'.__( ' Email subject(s): ', 'fws-ajax-contact-form' ).'</th>
 					<td>
-						<input class="regular-text" type="text" placeholder="" value="'.esc_attr( get_option('fwsacf-emailsubject') ).'" name="fwsacf-emailsubject">
-						<p class="description">The email subject for each message sent by the contact form.</p>
+						<textarea class="large-text" rows="3" name="fwsacf-emailsubject">'.esc_textarea( get_option('fwsacf-emailsubject') ).'</textarea>
+						<p class="description">'.__( 'The email subject for each message sent by the contact form. Add multiple subject rows to create a SELECT menu for your contact form.', 'fws-ajax-contact-form' ).'</p>
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"> API Key </th>
+					<th scope="row">'.__( ' API Key ', 'fws-ajax-contact-form' ).'</th>
 					<td>
 						<input class="regular-text" type="text" placeholder="" value="'.esc_attr( get_option('fwsacf-apiKey') ).'" name="fwsacf-apiKey">
-						<p class="description">Your Mailgun Public API key, which starts "pubkey-".</p>
+						<p class="description">'.__( 'Your Mailgun Public API key, which starts "pubkey-". Keep this field empty to disable that feature.', 'fws-ajax-contact-form' ).'</p>
 					</td>
 				</tr>';
 				$checked = (get_option('fwsacf-include-css')) ? ' checked="checked"' : '';
 				echo '
 				<tr valign="top">
-					<th scope="row"> Include CSS </th>
+					<th scope="row">'.__( ' Include CSS ', 'fws-ajax-contact-form' ).'</th>
 					<td>
 						<label for="fwsacf-include-css">
 						<input id="fwsacf-include-css" type="checkbox" value="1" name="fwsacf-include-css"'.$checked.'>
-						Include our stylesheet for your web form
+						'.__( 'Include our stylesheet for your contact form', 'fws-ajax-contact-form' ).'
 						</label>
 					</td>
 				</tr>
 			</table>
-			<h4>Don\'t use the fields below if your Google Analytics or Clicky JavaScript snippet isn\'t installed!</h4>
+			<h4>'.__( 'Don\'t use the fields below if your Google Analytics or Clicky JavaScript snippet isn\'t installed!', 'fws-ajax-contact-form' ).'</h4>
 			<table class="form-table">
 				<tr valign="top">
-					<th scope="row"> Track page views in Google Analytics </th>
+					<th scope="row">'.__( ' Track page views in Google Analytics ', 'fws-ajax-contact-form' ).'</th>
 					<td>
 						<input class="regular-text" type="text" placeholder="" value="'.esc_attr( get_option('fwsacf-googleanalytics') ).'" name="fwsacf-googleanalytics">
-						<p class="description">Track a page view in Google analytics after the form is submitted (f.e. /contact/submitted.html).</p>
+						<p class="description">'.__( 'Track a page view in Google analytics after the form is submitted (f.e. /contact/submitted.html).', 'fws-ajax-contact-form' ).'</p>
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"> Track goals in Clicky </th>
+					<th scope="row">'.__( ' Track goals in Clicky ', 'fws-ajax-contact-form' ).'</th>
 					<td>
 						<input class="regular-text" type="text" placeholder="" value="'.esc_attr( get_option('fwsacf-clickyanalytics') ).'" name="fwsacf-clickyanalytics">
-						<p class="description">Add here the goal ID for a manual goal you\'ve already defined in Clicky (check the FAQ for information).</p>
+						<p class="description">'.__( 'Add here the goal ID for a manual goal you\'ve already defined in Clicky (check the FAQ for information).', 'fws-ajax-contact-form' ).'</p>
 					</td>
 				</tr>
 			</table>
 
 			<p class="submit">
-				<input class="button-primary" type="submit" value="Save Changes">
+				<input class="button-primary" type="submit" value="'.__( 'Save Changes', 'fws-ajax-contact-form' ).'">
 			</p>
-		</form>';
-		if (get_option('fwsacf-apiKey')) echo '
-		<h3>How to use?</h3>
-		<p>Add the following shortcode into your page. Use the shortcode attribute "emailsubject" to overwrite the setting for the mail subject from this page.</p>
-		<p><code>[FWSAjaxContactForm]</code> or <code>[FWSAjaxContactForm emailsubject="My email subject"]</code></p>
+		</form>
+		<h3>'.__( 'How to use?', 'fws-ajax-contact-form' ).'</h3>
+		<p>'.__( 'Add the following shortcode into your page. Use the shortcode attribute "emailsubject" to overwrite the setting for the mail subject from this page. Enter multiple subject values, divided by "|" (pipe) symbols, to create a SELECT menu.', 'fws-ajax-contact-form' ).'</p>
+		<p><code>[FWSAjaxContactForm]</code> &nbsp; <code>[FWSAjaxContactForm emailsubject="My email subject"]</code></p>
 	</div>';
 }
 
@@ -139,18 +138,15 @@ function FWS_contactform_add_script() {
 	global $post;
 	if( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'FWSAjaxContactForm') ) {
 		wp_enqueue_script( 'fws-contactform-script', plugin_dir_url(__FILE__).'contact.js', array('jquery') );
-		wp_localize_script( 'fws-contactform-script', 'ajax_object',
+		wp_localize_script( 'fws-contactform-script', 'ajax_object_acf',
 			array(
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
-				'mailgun_key' => get_option('fwsacf-apiKey'),
 				'plugin_base_path' => plugin_dir_url(__FILE__),
 				'googleanalytics' => get_option('fwsacf-googleanalytics'),
 				'clickyanalytics' => get_option('fwsacf-clickyanalytics'),
 				'js_alt_loading' => __( 'Loading...', 'fws-ajax-contact-form' ),
 				'js_msg_empty_fields' => __( 'At least one of the form fields is empty.', 'fws-ajax-contact-form' ),
-				'js_msg_did_you_mean' => __( 'Error, did you mean', 'fws-ajax-contact-form' ),
-				'js_msg_invalid_email' => __( 'The entered mail address is invalid.', 'fws-ajax-contact-form' ),
-				'js_msg_error_validation' => __( 'Error occurred, unable to validate your email address.', 'fws-ajax-contact-form' )
+				'js_msg_invalid_email' => __( 'The entered email address isn\'t valid.', 'fws-ajax-contact-form' )
 			)
 		);
 		if (get_option('fwsacf-include-css')) {
@@ -161,16 +157,16 @@ function FWS_contactform_add_script() {
 add_action('wp_enqueue_scripts', 'FWS_contactform_add_script');
 
 
-
-
-function FWS_createAjaxContactForm($atts) {
-	extract( shortcode_atts(
+function FWS_createAjaxContactForm($atts = null) {
+	$atts = shortcode_atts(
 		array(
-			'emailsubject' => ''
-		), $atts )
+			'emailsubject' => get_option('fwsacf-emailsubject')
+		),
+		$atts
 	);
+	
 	if (!get_option('fwsacf-apiKey')) {
-		return '<p>Please enter the Mailgun API key!</p>';
+		return '<p>'.__( 'Please enter the Mailgun API key!', 'fws-ajax-contact-form' ).'</p>';
 	} else {
 		$html = '
 	<form id="contactform" role="form">
@@ -181,15 +177,32 @@ function FWS_createAjaxContactForm($atts) {
 		<div class="form-group">
 			<label for="email">'.__( 'Email address' , 'fws-ajax-contact-form' ).'</label>
 			<input class="form-control input-sm" type="email" name="email" id="email" size="30" tabindex="2" />
-		</div>
+		</div>';
+		if ($atts['emailsubject'] != '') {
+			$subj_parts = preg_split('/[\r\n\|]+/', $atts['emailsubject']);
+			if (count($subj_parts) > 1) {
+				$html .= '
+		<div class="form-group">
+			<label for="message">'.__( 'Subject' , 'fws-ajax-contact-form' ).'</label>
+			<select class="form-control" name="mailsubject">';
+				foreach ($subj_parts as $part) {
+					$html .= '
+				<option>'.$part.'</option>';
+				}
+				$html .= '
+			</select>
+		</div>';	
+			} else {
+				$html .= '
+		<input type="hidden" name="mailsubject" value="'.esc_attr($atts['emailsubject']).'" />';
+			}
+		} 
+		$html .= '
 		<div class="form-group">
 			<label for="message">'.__( 'Message' , 'fws-ajax-contact-form' ).'</label>
 			<textarea class="form-control" name="message" id="message" tabindex="3" rows="8"></textarea>
 		</div>
-		<div class="form-group text-right">';
-		if ($emailsubject != '') $html .= '
-			<input type="hidden" name="mailsubject" value="'.esc_attr($emailsubject).'" />';
-		$html .= '
+		<div class="form-group text-right">
 			<input type="hidden" name="action" value="contactform_action" />
 			'.wp_nonce_field('ajax_contactform', '_acf_nonce', true, false).'
 			<button class="btn btn-primary btn-sm" id="contactbutton" type="button">'.__( 'Submit' , 'fws-ajax-contact-form' ).'</button>
@@ -200,6 +213,34 @@ function FWS_createAjaxContactForm($atts) {
 	}
 }
 add_shortcode('FWSAjaxContactForm', 'FWS_createAjaxContactForm');
+
+
+function check_email_address_mailgun($email) {
+	if ($key = get_option('fwsacf-apiKey')) {
+		$url = 'https://api.mailgun.net/v2/address/validate?address='.esc_url($email, 'https');
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_USERPWD, 'api:'.$key);
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$response = curl_exec($ch);
+		$obj = json_decode($response);
+		if ($obj->is_valid) {
+			return 1;
+		} else {
+			if ($obj->did_you_mean) {
+				return sprintf(__( 'Invalid email address, did you mean "%s"', 'fws-ajax-contact-form' ), $obj->did_you_mean);
+			} else {
+				return __( 'The entered email address isn\'t valid.', 'fws-ajax-contact-form' );
+			}
+		}
+	} else {
+		if (is_email($email)) {
+			return 1;
+		} else {
+			return __( 'The entered email address isn\'t valid.', 'fws-ajax-contact-form' );
+		}
+	}
+}
 
 
 function FWS_ajax_contactform_action_callback() {
@@ -213,29 +254,38 @@ function FWS_ajax_contactform_action_callback() {
 		} else {
 			$name = filter_var($_POST['name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
 			$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-			if (!empty($_POST['mailsubject'])) {
-				$subject = filter_var($_POST['mailsubject'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
+			$email_check = check_email_address_mailgun($email);
+			if ($email_check == 1) {
+				if (!empty($_POST['mailsubject'])) {
+					$subject = filter_var($_POST['mailsubject'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
+				} else {
+					$subject = __( 'A message from your website\'s contact form' , 'fws-ajax-contact-form' );
+					if ($subject_option = get_option('fwsacf-emailsubject')) {
+						$subj_parts = explode(PHP_EOL, $subject_option);
+						if (count($subj_parts) == 1) $subject = $subject_option;
+					}						
+				}
+				$message = addslashes_gpc($_POST['message']);
+				$message .= sprintf(__( '%1$sIP address: %2$s' , 'fws-ajax-contact-form' ), PHP_EOL.PHP_EOL, $_SERVER['REMOTE_ADDR']);
+				$message .= sprintf(__( '%1$sSender\'s name: %2$s' , 'fws-ajax-contact-form' ), PHP_EOL, $name);
+				$message .= sprintf(__( '%1$sE-mail address: %2$s' , 'fws-ajax-contact-form' ), PHP_EOL, $email);
+				$sendmsg = __( 'Thanks, for your message. We will respond as soon as possible.' , 'fws-ajax-contact-form' );
+				$to = (get_option('acf-mailto')) ? get_option('acf-mailto') : get_option('admin_email');
+				$sitename = strtolower( $_SERVER['SERVER_NAME'] );
+				if ( substr( $sitename, 0, 4 ) == 'www.' ) {
+					$sitename = substr( $sitename, 4 );
+				}
+				$emailfrom = (get_option('acf-emailfrom')) ? get_option('acf-emailfrom') : 'noreply@'.$sitename;
+				$header = 'From: '.get_option('blogname').' <'.$emailfrom.'>'.PHP_EOL;
+				$header .= 'Reply-To: '.$email.PHP_EOL;
+				if ( wp_mail($to, $subject, $message, $header) ) {
+					$status = 'success';
+					$error = $sendmsg;
+				} else {
+					$error = __( 'The script can\'t send this email message.' , 'fws-ajax-contact-form' );
+				}
 			} else {
-				$subject = (get_option('fwsacf-emailsubject')) ? get_option('fwsacf-emailsubject') : __( 'A message from your website\'s contact form' , 'fws-ajax-contact-form' );
-			}
-			$message = esc_attr($_POST['message']);
-			$message .= sprintf(__( '%1$sIP address: %2$s' , 'fws-ajax-contact-form' ), PHP_EOL.PHP_EOL, $_SERVER['REMOTE_ADDR']);
-			$message .= sprintf(__( '%1$sSender\'s name: %2$s' , 'fws-ajax-contact-form' ), PHP_EOL, $name);
-			$message .= sprintf(__( '%1$sE-mail address: %2$s' , 'fws-ajax-contact-form' ), PHP_EOL, $email);
-			$sendmsg = __( 'Thanks, for the message. We will respond as soon as possible.' , 'fws-ajax-contact-form' );
-			$to = (get_option('acf-mailto')) ? get_option('acf-mailto') : get_option('admin_email');
-			$sitename = strtolower( $_SERVER['SERVER_NAME'] );
-			if ( substr( $sitename, 0, 4 ) == 'www.' ) {
-				$sitename = substr( $sitename, 4 );
-			}
-			$emailfrom = (get_option('acf-emailfrom')) ? get_option('acf-emailfrom') : 'noreply@'.$sitename;
-			$header = 'From: '.get_option('blogname').' <'.$emailfrom.'>'.PHP_EOL;
-			$header .= 'Reply-To: '.$email.PHP_EOL;
-			if ( wp_mail($to, $subject, $message, $header) ) {
-				$status = 'success';
-				$error = $sendmsg;
-			} else {
-				$error = __( 'Some errors occurred.' , 'fws-ajax-contact-form' );
+				$error = $email_check;
 			}
 		}
 	}
