@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Ajax Contact Form
-Version: 1.0.3
+Version: 1.0.4
 Plugin URI: http://www.finalwebsites.com/ajax-contact-form-wordpress/
 Description: An easy to use Ajax contact form with (optional) advanced email address validation provided by Mailgun.
 Author: Olaf Lederer
@@ -27,6 +27,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+if ( is_admin() ) {
+	register_deactivation_hook(__FILE__, 'fwsacf_deactivate');
+}
 add_action( 'plugins_loaded', 'FWSACF_load_textdomain' );
 
 function FWSACF_load_textdomain() {
@@ -43,7 +46,8 @@ function FWSACF_plugin_menu() {
 function register_FWSACF_setting() {
 	register_setting( 'FWSACF_options', 'fwsacf-mailto' );
 	register_setting( 'FWSACF_options', 'fwsacf-emailfrom' );
-	register_setting( 'FWSACF_options', 'fwsacf-emailsubject' );
+	register_setting( 'FWSACF_options', 'fwsacf-emailsubject', 'strip_tags' );
+	register_setting( 'FWSACF_options', 'fwsacf-thankyoumessage' );
 	register_setting( 'FWSACF_options', 'fwsacf-apiKey' );
 	register_setting( 'FWSACF_options', 'fwsacf-include-css' );
 	register_setting( 'FWSACF_options', 'fwsacf-googleanalytics' );
@@ -56,7 +60,7 @@ function FWSACF_options_page() {
 	<div class="wrap">
 		<h2>Ajax Contact Form by finalwebsites</h2>
 		<p>'.sprintf ( __( 'Configure your contact form options below. If you like to change the (error) messages and/or labels visible via the web form, please use a localization plugin (f.e. <a href="%s" target="_blank">Codestyling Localization</a>).', 'fws-mailchimp-subscribe' ), esc_url( 'https://wordpress.org/plugins/codestyling-localization/' ) ).'</p>
-		<p>'.sprintf ( __( 'Eenter a valid Mailgun API key to use the advanced email address validation feature. Register a free <a href="%s">Mailgun account</a> to get your API key.', 'fws-mailchimp-subscribe' ), esc_url( 'https://mailgun.com/signup' ) ).'</p>';
+		<p>'.sprintf ( __( 'Enter a valid Mailgun API key to use the advanced email address validation feature. Register a free <a href="%s">Mailgun account</a> to get your API key.', 'fws-mailchimp-subscribe' ), esc_url( 'https://mailgun.com/signup' ) ).'</p>';
 
 	echo '
 		<form action="options.php" method="post">';
@@ -68,7 +72,7 @@ function FWSACF_options_page() {
 				<tr valign="top">
 					<th scope="row">'.__( ' Email address (to): ', 'fws-ajax-contact-form' ).'</th>
 					<td>
-						<input class="regular-text" type="text" placeholder="" value="'.esc_attr( get_option('fwsacf-mailto') ).'" name="fwsacf-mailto">
+						<input class="regular-text" type="text" placeholder="" value="'.esc_attr( get_option('fwsacf-mailto', get_option( 'admin_email' )) ).'" name="fwsacf-mailto">
 						<p class="description">'.__( 'The email address where you like to receive the messages.', 'fws-ajax-contact-form' ).'</p>
 					</td>
 				</tr>
@@ -82,24 +86,29 @@ function FWSACF_options_page() {
 				<tr valign="top">
 					<th scope="row">'.__( ' Email subject(s): ', 'fws-ajax-contact-form' ).'</th>
 					<td>
-						<textarea class="large-text" rows="3" name="fwsacf-emailsubject">'.esc_textarea( get_option('fwsacf-emailsubject') ).'</textarea>
+						<textarea class="large-text" rows="3" name="fwsacf-emailsubject">'.esc_textarea( get_option('fwsacf-emailsubject', __( 'A message from your website\'s contact form' , 'fws-ajax-contact-form' )) ).'</textarea>
 						<p class="description">'.__( 'The email subject for each message sent by the contact form. Add multiple subject rows to create a SELECT menu for your contact form.', 'fws-ajax-contact-form' ).'</p>
 					</td>
 				</tr>
+				<tr valign="top">
+					<th scope="row">'.__( 'Thank you - message: ', 'fws-ajax-contact-form' ).'</th>
+					<td>
+						<textarea class="large-text" rows="2" name="fwsacf-thankyoumessage">'.esc_textarea( get_option('fwsacf-thankyoumessage', __( 'Thanks, for your message. We will respond as soon as possible.' , 'fws-ajax-contact-form' )) ).'</textarea>
+						<p class="description">'.__( 'Add here your personal "Thank You" message which appears after the contact form was submitted (some HTML allowed).', 'fws-ajax-contact-form' ).'</p>
+					</td>
+				</tr>				
 				<tr valign="top">
 					<th scope="row">'.__( ' API Key ', 'fws-ajax-contact-form' ).'</th>
 					<td>
 						<input class="regular-text" type="text" placeholder="" value="'.esc_attr( get_option('fwsacf-apiKey') ).'" name="fwsacf-apiKey">
 						<p class="description">'.__( 'Your Mailgun Public API key, which starts "pubkey-". Keep this field empty to disable that feature.', 'fws-ajax-contact-form' ).'</p>
 					</td>
-				</tr>';
-				$checked = (get_option('fwsacf-include-css')) ? ' checked="checked"' : '';
-				echo '
+				</tr>
 				<tr valign="top">
 					<th scope="row">'.__( ' Include CSS ', 'fws-ajax-contact-form' ).'</th>
 					<td>
 						<label for="fwsacf-include-css">
-						<input id="fwsacf-include-css" type="checkbox" value="1" name="fwsacf-include-css"'.$checked.'>
+						<input id="fwsacf-include-css" type="checkbox" value="1" name="fwsacf-include-css" '.checked( get_option('fwsacf-include-css'), 1, false ).'>
 						'.__( 'Include our stylesheet for your contact form', 'fws-ajax-contact-form' ).'
 						</label>
 					</td>
@@ -164,11 +173,7 @@ function FWS_createAjaxContactForm($atts = null) {
 		),
 		$atts
 	);
-	
-	if (!get_option('fwsacf-apiKey')) {
-		return '<p>'.__( 'Please enter the Mailgun API key!', 'fws-ajax-contact-form' ).'</p>';
-	} else {
-		$html = '
+	$html = '
 	<form id="contactform" role="form">
 		<div class="form-group">
 			<label for="name">'.__( 'Name' , 'fws-ajax-contact-form' ).'</label>
@@ -184,10 +189,11 @@ function FWS_createAjaxContactForm($atts = null) {
 				$html .= '
 		<div class="form-group">
 			<label for="message">'.__( 'Subject' , 'fws-ajax-contact-form' ).'</label>
-			<select class="form-control" name="mailsubject">';
+			<select class="form-control" name="mailsubject">
+				<option value="">Choose one...</option>';
 				foreach ($subj_parts as $part) {
 					$html .= '
-				<option>'.$part.'</option>';
+				<option value="'.$part.'">'.$part.'</option>';
 				}
 				$html .= '
 			</select>
@@ -209,20 +215,20 @@ function FWS_createAjaxContactForm($atts = null) {
 		</div>
 	</form>
 	<div id="contact-msg" class="error-message"></div>';
-		return $html;
-	}
+	return $html;
 }
 add_shortcode('FWSAjaxContactForm', 'FWS_createAjaxContactForm');
 
 
 function check_email_address_mailgun($email) {
 	if ($key = get_option('fwsacf-apiKey')) {
-		$url = 'https://api.mailgun.net/v2/address/validate?address='.esc_url($email, 'https');
+		$url = 'https://api.mailgun.net/v2/address/validate?address='.urlencode($email);
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_USERPWD, 'api:'.$key);
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$response = curl_exec($ch);
+		//print_r($response);
 		$obj = json_decode($response);
 		if ($obj->is_valid) {
 			return 1;
@@ -269,18 +275,18 @@ function FWS_ajax_contactform_action_callback() {
 				$message .= sprintf(__( '%1$sIP address: %2$s' , 'fws-ajax-contact-form' ), PHP_EOL.PHP_EOL, $_SERVER['REMOTE_ADDR']);
 				$message .= sprintf(__( '%1$sSender\'s name: %2$s' , 'fws-ajax-contact-form' ), PHP_EOL, $name);
 				$message .= sprintf(__( '%1$sE-mail address: %2$s' , 'fws-ajax-contact-form' ), PHP_EOL, $email);
-				$sendmsg = __( 'Thanks, for your message. We will respond as soon as possible.' , 'fws-ajax-contact-form' );
-				$to = (get_option('acf-mailto')) ? get_option('acf-mailto') : get_option('admin_email');
+				$to = get_option('fwsacf-mailto', get_option('admin_email'));
 				$sitename = strtolower( $_SERVER['SERVER_NAME'] );
 				if ( substr( $sitename, 0, 4 ) == 'www.' ) {
 					$sitename = substr( $sitename, 4 );
 				}
-				$emailfrom = (get_option('acf-emailfrom')) ? get_option('acf-emailfrom') : 'noreply@'.$sitename;
+				$emailfrom = get_option('fwsacf-emailfrom', 'noreply@'.$sitename);
 				$header = 'From: '.get_option('blogname').' <'.$emailfrom.'>'.PHP_EOL;
 				$header .= 'Reply-To: '.$email.PHP_EOL;
 				if ( wp_mail($to, $subject, $message, $header) ) {
 					$status = 'success';
-					$error = $sendmsg;
+					$thankyou = get_option('fwsacf-thankyoumessage');
+					$error = ($thankyou != '') ? $thankyou : __( 'Thanks, for your message. We will respond as soon as possible.' , 'fws-ajax-contact-form' );
 				} else {
 					$error = __( 'The script can\'t send this email message.' , 'fws-ajax-contact-form' );
 				}
@@ -296,3 +302,6 @@ function FWS_ajax_contactform_action_callback() {
 add_action( 'wp_ajax_contactform_action', 'FWS_ajax_contactform_action_callback' );
 add_action( 'wp_ajax_nopriv_contactform_action', 'FWS_ajax_contactform_action_callback' );
 
+function fwsacf_deactivate() {
+	// nothing to do
+}

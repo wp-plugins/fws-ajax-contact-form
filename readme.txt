@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: contact form, ajax contact form, email, contact, forms, api, ajax, email form, shortcode, clicky, Google Analytics, tracking
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 
 An easy to use Ajax contact form with (optional) advanced email address validation provided by Mailgun.
 
@@ -16,14 +16,15 @@ This contact form plugin is used to create a simple contact form using Ajax tech
 
 = Check the features: =
 
-* Advanced email address validation using the Mailgun API system
+* Advanced email address validation using the Mailgun API system (optional)
 * Using nonces for simple form value validation
 * Works with the default wp_mail() function (use it together with the [Mailgun for Wordpress](https://wordpress.org/plugins/mailgun/) plugin to send emails via SMTP)
 * Options for the email subject and the from/to email addresses
-* You can change/translate all public text messages while using a localization tool
+* You can change/translate all text using a localization tool
 * The form HTML is compatibel with the Boostrap CSS framework
 * Optional: use the CSS style-sheet included by the plugin
 * Track succesfully submitted forms in Google Analytics and/or Clicky
+* Uninstall function, we remove the plugin options on removal!
 
 The plugin is built te keep stuff simple. If you need a complex web form or if you need a form builder, please use one of the existing form plugins. To use the email validation feature you need an API key. Open a [free Mailgun account](https://mailgun.com/signup) to get one.
 
@@ -64,6 +65,23 @@ If you use a Clicky premium plan  it's possible to track Goals.
 
 == Changelog ==
 
+= 1.0.4 =
+
+* Other
+	* Added .pot file for translations
+
+* Bugfixes
+	* Removed the IF statement for the API key value inside the shortcode function. Since version 1.03 the API key isn't required anymore.
+	* Fixed a view option name values inside the function FWS_ajax_contactform_action_callback()
+
+* Enhancement
+	* Added Dutch translations
+	* Added a new option to change the "thank you message" (I keep the old text as fallback option) 
+	* Code optimizations (replaced standard PHP functions and code with native WordPress functions)
+	* Added default options to plugin values (where possible)
+	* New: Uninstall function - All plugin option are gone on removal
+
+
 = 1.0.3 =
 
 * Other
@@ -84,7 +102,7 @@ If you use a Clicky premium plan  it's possible to track Goals.
 * Other
 	* Added icons for the plugin repository
 	* The plugin is tested for WordPress 4.0
-	* Added instructions when using the track goal feature
+	* Added instructions for using the track Clicky goal feature
 	* Added an updated screenshot for the plugin settings
 
 = 1.0.2 =
@@ -95,6 +113,7 @@ If you use a Clicky premium plan  it's possible to track Goals.
 * Enhancement
 	* Simple goal or conversion tracking for Google Analytics and Clicky
 
+
 = 1.0.1 =
 
 * Bugfixes
@@ -104,6 +123,7 @@ If you use a Clicky premium plan  it's possible to track Goals.
 * Enhancement
 	* Added some screenshots and FAQ's
 	* Overwrite the mail subject global setting by using a shortcode attribute
+
 
 = 1.0 =
 * Initial release
