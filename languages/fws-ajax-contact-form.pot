@@ -1,0 +1,212 @@
+# Copyright (C) 2014 Ajax Contact Form
+# This file is distributed under the same license as the Ajax Contact Form package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Ajax Contact Form 1.0.3\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/fws-ajax-contact-form\n"
+"POT-Creation-Date: 2014-10-20 17:40:10+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: fws-ajax-contact-form.php:58
+msgid ""
+"Configure your contact form options below. If you like to change the (error) "
+"messages and/or labels visible via the web form, please use a localization "
+"plugin (f.e. <a href=\"%s\" target=\"_blank\">Codestyling Localization</a>)."
+msgstr ""
+
+#: fws-ajax-contact-form.php:59
+msgid ""
+"Enter a valid Mailgun API key to use the advanced email address validation "
+"feature. Register a free <a href=\"%s\">Mailgun account</a> to get your API "
+"key."
+msgstr ""
+
+#: fws-ajax-contact-form.php:65
+msgid "Configuration"
+msgstr ""
+
+#: fws-ajax-contact-form.php:69
+msgid " Email address (to): "
+msgstr ""
+
+#: fws-ajax-contact-form.php:72
+msgid "The email address where you like to receive the messages."
+msgstr ""
+
+#: fws-ajax-contact-form.php:76
+msgid " Email address (from): "
+msgstr ""
+
+#: fws-ajax-contact-form.php:79
+msgid "The email address which is the sender, f.e. mail@yoursite.com."
+msgstr ""
+
+#: fws-ajax-contact-form.php:83
+msgid " Email subject(s): "
+msgstr ""
+
+#: fws-ajax-contact-form.php:86
+msgid ""
+"The email subject for each message sent by the contact form. Add multiple "
+"subject rows to create a SELECT menu for your contact form."
+msgstr ""
+
+#: fws-ajax-contact-form.php:90
+msgid " API Key "
+msgstr ""
+
+#: fws-ajax-contact-form.php:93
+msgid ""
+"Your Mailgun Public API key, which starts \"pubkey-\". Keep this field empty "
+"to disable that feature."
+msgstr ""
+
+#: fws-ajax-contact-form.php:99
+msgid " Include CSS "
+msgstr ""
+
+#: fws-ajax-contact-form.php:103
+msgid "Include our stylesheet for your contact form"
+msgstr ""
+
+#: fws-ajax-contact-form.php:108
+msgid ""
+"Don't use the fields below if your Google Analytics or Clicky JavaScript "
+"snippet isn't installed!"
+msgstr ""
+
+#: fws-ajax-contact-form.php:111
+msgid " Track page views in Google Analytics "
+msgstr ""
+
+#: fws-ajax-contact-form.php:114
+msgid ""
+"Track a page view in Google analytics after the form is submitted (f.e. /"
+"contact/submitted.html)."
+msgstr ""
+
+#: fws-ajax-contact-form.php:118
+msgid " Track goals in Clicky "
+msgstr ""
+
+#: fws-ajax-contact-form.php:121
+msgid ""
+"Add here the goal ID for a manual goal you've already defined in Clicky "
+"(check the FAQ for information)."
+msgstr ""
+
+#: fws-ajax-contact-form.php:127
+msgid "Save Changes"
+msgstr ""
+
+#: fws-ajax-contact-form.php:130
+msgid "How to use?"
+msgstr ""
+
+#: fws-ajax-contact-form.php:131
+msgid ""
+"Add the following shortcode into your page. Use the shortcode attribute "
+"\"emailsubject\" to overwrite the setting for the mail subject from this "
+"page. Enter multiple subject values, divided by \"|\" (pipe) symbols, to "
+"create a SELECT menu."
+msgstr ""
+
+#: fws-ajax-contact-form.php:147
+msgid "Loading..."
+msgstr ""
+
+#: fws-ajax-contact-form.php:148
+msgid "At least one of the form fields is empty."
+msgstr ""
+
+#: fws-ajax-contact-form.php:149 fws-ajax-contact-form.php:233
+#: fws-ajax-contact-form.php:240
+msgid "The entered email address isn't valid."
+msgstr ""
+
+#: fws-ajax-contact-form.php:169
+msgid "Please enter the Mailgun API key!"
+msgstr ""
+
+#: fws-ajax-contact-form.php:174
+msgid "Name"
+msgstr ""
+
+#: fws-ajax-contact-form.php:178
+msgid "Email address"
+msgstr ""
+
+#: fws-ajax-contact-form.php:186
+msgid "Subject"
+msgstr ""
+
+#: fws-ajax-contact-form.php:202
+msgid "Message"
+msgstr ""
+
+#: fws-ajax-contact-form.php:208
+msgid "Submit"
+msgstr ""
+
+#: fws-ajax-contact-form.php:231
+msgid "Invalid email address, did you mean \"%s\""
+msgstr ""
+
+#: fws-ajax-contact-form.php:250
+msgid "All fields are required to enter."
+msgstr ""
+
+#: fws-ajax-contact-form.php:253
+msgid "Verification error, try again."
+msgstr ""
+
+#: fws-ajax-contact-form.php:262
+msgid "A message from your website's contact form"
+msgstr ""
+
+#: fws-ajax-contact-form.php:269
+msgid "%1$sIP address: %2$s"
+msgstr ""
+
+#: fws-ajax-contact-form.php:270
+msgid "%1$sSender's name: %2$s"
+msgstr ""
+
+#: fws-ajax-contact-form.php:271
+msgid "%1$sE-mail address: %2$s"
+msgstr ""
+
+#: fws-ajax-contact-form.php:272
+msgid "Thanks, for your message. We will respond as soon as possible."
+msgstr ""
+
+#: fws-ajax-contact-form.php:285
+msgid "The script can't send this email message."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Ajax Contact Form"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.finalwebsites.com/ajax-contact-form-wordpress/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"An easy to use Ajax contact form with (optional) advanced email address "
+"validation provided by Mailgun."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Olaf Lederer"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.finalwebsites.com/"
+msgstr ""
