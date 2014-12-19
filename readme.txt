@@ -3,9 +3,9 @@ Contributors: finalwebsites
 Donate link: http://www.finalwebsites.com/
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
-Tags: contact form, ajax contact form, email, contact, forms, api, ajax, email form, shortcode, clicky, Google Analytics, tracking
+Tags: contact form, ajax contact form, email, contact, forms, api, ajax, email form, shortcode, clicky, Google Analytics, tracking, bootstrap
 Requires at least: 3.0
-Tested up to: 4.0
+Tested up to: 4.1
 Stable tag: 1.0.4
 
 An easy to use Ajax contact form with (optional) advanced email address validation provided by Mailgun.
@@ -21,26 +21,26 @@ This contact form plugin is used to create a simple contact form using Ajax tech
 * Works with the default wp_mail() function (use it together with the [Mailgun for Wordpress](https://wordpress.org/plugins/mailgun/) plugin to send emails via SMTP)
 * Options for the email subject and the from/to email addresses
 * You can change/translate all text using a localization tool
-* The form HTML is compatibel with the Boostrap CSS framework
+* The form HTML is compatible with the Bootstrap CSS framework
 * Optional: use the CSS style-sheet included by the plugin
-* Track succesfully submitted forms in Google Analytics and/or Clicky
+* Track successfully submitted forms in Google Analytics and/or Clicky
 * Uninstall function, we remove the plugin options on removal!
 
-The plugin is built te keep stuff simple. If you need a complex web form or if you need a form builder, please use one of the existing form plugins. To use the email validation feature you need an API key. Open a [free Mailgun account](https://mailgun.com/signup) to get one.
+The plugin is built to keep stuff simple. If you need a complex web form or if you need a form builder, please use one of the existing form plugins. To use the email validation feature you need an API key. Open a [free Mailgun account](https://mailgun.com/signup) to get one.
 
 
 == Installation ==
 
 The quickest method for installing the contact form is:
 
-1. Automatically install using the builtin WordPress Plugin installer or...
+1. Automatically install using the built-in WordPress Plugin installer or...
 1. Upload the entire `fws-ajax-contact-form` folder to the `/wp-content/plugins/` directory.
 1. Activate the plugin through the 'Plugins' menu in WordPress.
 1. Add the shortcode [FWSAjaxContactForm] into the page of your choice.
 
 == Frequently Asked Questions ==
 
-= Is it possible to use a differnet method for email address validation (instead of using the Mailgun API) =
+= Is it possible to use a different method for email address validation (instead of using the Mailgun API) =
 
 Yes, the external email address validation service is optional. My advice is to use them, because it's very important to receive an email address that is correct. The Mailgun API system will test an email address for:
 
@@ -76,7 +76,7 @@ If you use a Clicky premium plan  it's possible to track Goals.
 
 * Enhancement
 	* Added Dutch translations
-	* Added a new option to change the "thank you message" (I keep the old text as fallback option) 
+	* Added a new option to change the "thank you message" (I keep the old text as fallback option)
 	* Code optimizations (replaced standard PHP functions and code with native WordPress functions)
 	* Added default options to plugin values (where possible)
 	* New: Uninstall function - All plugin option are gone on removal
