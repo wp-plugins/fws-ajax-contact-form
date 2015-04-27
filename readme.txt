@@ -5,8 +5,8 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: contact form, ajax contact form, email, contact, forms, api, ajax, email form, shortcode, clicky, Google Analytics, tracking, bootstrap
 Requires at least: 3.0
-Tested up to: 4.1
-Stable tag: 1.0.4
+Tested up to: 4.2
+Stable tag: 1.0.5
 
 An easy to use Ajax contact form with (optional) advanced email address validation provided by Mailgun.
 
@@ -64,6 +64,19 @@ If you use a Clicky premium plan  it's possible to track Goals.
 
 
 == Changelog ==
+
+= 1.0.5 =
+
+* Other
+	* Replaced the link for the "Codestyling Localization" plugin. The plugin doesn't exists anymore, I use "Loco Translate" now.
+	* The plugin is tested for WordPress 4.2
+	
+ Bugfixes
+	* Fixed some issues with the (Dutch) translation files
+
+* Enhancement
+	* The contact form message is filtered now by using the function wp_kses() before the message is added to the email message
+
 
 = 1.0.4 =
 

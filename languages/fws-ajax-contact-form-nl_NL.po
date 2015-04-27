@@ -5,184 +5,220 @@ msgstr ""
 "Project-Id-Version: Ajax Contact Form\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-04-27 12:35+0100\n"
-"PO-Revision-Date: 2015-04-27 12:35+0100\n"
+"PO-Revision-Date: 2015-04-27 12:37+0100\n"
 "Last-Translator: Olaf Lederer <olaf@finalwebsites.com>\n"
 "Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: ../../trunk\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: NETHERLANDS\n"
 
 #: ../../trunk/fws-ajax-contact-form.php:62
 #, php-format
 msgid "Configure your contact form options below. If you like to change the (error) messages and/or labels visible via the web form, please use the plugin (f.e. <a href=\"%s\" target=\"_blank\">%s</a>)."
-msgstr ""
+msgstr "De onderstaande opties zijn bedoeld voor de configuratie van contactformulier. Wanneer je de (fout) meldingen en/of teksten wil wijzigen, kan dit eenvoudig met de plugin (f.e. <a href=\"%s\" target=\"_blank\">%s</a>)."
 
 #: ../../trunk/fws-ajax-contact-form.php:64
 #, php-format
 msgid "Enter a valid Mailgun API key to use the advanced email address validation feature. Register a free <a href=\"%s\">Mailgun account</a> to get your API key."
-msgstr ""
+msgstr "Geef een geldige Mailgun API key op om de geavanceerd e-mailadres validatie in te schakelen. Maak gratis een <a href=\"%s\">Mailgun account</a> aan om een API key te ontvangen."
 
 #: ../../trunk/fws-ajax-contact-form.php:71
 msgid "Configuration"
-msgstr ""
+msgstr "Configuratie"
 
 #: ../../trunk/fws-ajax-contact-form.php:75
 msgid " Email address (to): "
-msgstr ""
+msgstr "E-mailadres (aan):"
 
 #: ../../trunk/fws-ajax-contact-form.php:78
 msgid "The email address where you like to receive the messages."
-msgstr ""
+msgstr "Het e-mailadres waarop je de berichten wil ontvangen."
 
 #: ../../trunk/fws-ajax-contact-form.php:82
 msgid " Email address (from): "
-msgstr ""
+msgstr "E-mailadres (van):"
 
 #: ../../trunk/fws-ajax-contact-form.php:85
 msgid "The email address which is the sender, f.e. mail@yoursite.com."
-msgstr ""
+msgstr "Het e-mailadres dat je als verzender wil gebruiken, bijvoorbeeld contact@jewebsite.nl."
 
 #: ../../trunk/fws-ajax-contact-form.php:89
 msgid " Email subject(s): "
-msgstr ""
+msgstr "E-mailonderwerp(en):"
 
 #: ../../trunk/fws-ajax-contact-form.php:91
 #: ../../trunk/fws-ajax-contact-form.php:270
 msgid "A message from your website's contact form"
-msgstr ""
+msgstr "Een bericht verzonden via het contactformulier op je website"
 
 #: ../../trunk/fws-ajax-contact-form.php:92
 msgid "The email subject for each message sent by the contact form. Add multiple subject rows to create a SELECT menu for your contact form."
-msgstr ""
+msgstr "Het e-mailonderwerp voor je contactformulier. Gebruik meerdere onderwerpen (1 per regel) om een SELECT menu voor je formulier aan te maken."
 
 #: ../../trunk/fws-ajax-contact-form.php:96
 msgid "Thank you - message: "
-msgstr ""
+msgstr "Bedankt - Melding:"
 
 #: ../../trunk/fws-ajax-contact-form.php:98
 #: ../../trunk/fws-ajax-contact-form.php:291
 msgid "Thanks, for your message. We will respond as soon as possible."
-msgstr ""
+msgstr "Bedankt voor je bericht. Wij zullen snelst mogelijk reageren."
 
 #: ../../trunk/fws-ajax-contact-form.php:99
 msgid "Add here your personal \"Thank You\" message which appears after the contact form was submitted (some HTML allowed)."
-msgstr ""
+msgstr "Plaats hier je persoonlijke \"Bedankt\" melding die verschijnt wanneer het contactformulier is verzonden (HTML is beperkt mogelijk)."
 
 #: ../../trunk/fws-ajax-contact-form.php:103
 msgid " API Key "
-msgstr ""
+msgstr "API Key"
 
 #: ../../trunk/fws-ajax-contact-form.php:106
 msgid "Your Mailgun Public API key, which starts \"pubkey-\". Keep this field empty to disable that feature."
-msgstr ""
+msgstr "Je Mailgun Public API key die met \"pubkey-\" begint. Maak het veld leeg om deze functie uit te zetten."
 
 #: ../../trunk/fws-ajax-contact-form.php:110
 msgid " Include CSS "
-msgstr ""
+msgstr "Inclusief CSS"
 
 #: ../../trunk/fws-ajax-contact-form.php:114
 msgid "Include our stylesheet for your contact form"
-msgstr ""
+msgstr "Onze stylesheet gebruiken voor het contactformulier"
 
 #: ../../trunk/fws-ajax-contact-form.php:119
 msgid "Don't use the fields below if your Google Analytics or Clicky JavaScript snippet isn't installed!"
-msgstr ""
+msgstr "De onderstaande velden zijn niet te gebruiken wanneer de code van Google Analytics of Clicky niet aanwezig is!"
 
 #: ../../trunk/fws-ajax-contact-form.php:122
 msgid " Track page views in Google Analytics "
-msgstr ""
+msgstr "Paginaweergaves in Google Analytics bijhouden"
 
 #: ../../trunk/fws-ajax-contact-form.php:125
 msgid "Track a page view in Google analytics after the form is submitted (f.e. /contact/submitted.html)."
-msgstr ""
+msgstr "Hou in Google Analytics het aantal paginaweergaves bij, zodra een formulier verstuurd is (bijvoorbeeld /contact/verzonden.html)."
 
 #: ../../trunk/fws-ajax-contact-form.php:129
 msgid " Track goals in Clicky "
-msgstr ""
+msgstr "Doelen in Clicky bijhouden"
 
 #: ../../trunk/fws-ajax-contact-form.php:132
 msgid "Add here the goal ID for a manual goal you've already defined in Clicky (check the FAQ for information)."
-msgstr ""
+msgstr "Geef hier het ID voor je doel op dat je eerder in Clicky hebt aangemaakt (raadpleeg de FAQ voor informatie)."
 
 #: ../../trunk/fws-ajax-contact-form.php:138
 msgid "Save Changes"
-msgstr ""
+msgstr "Wijzigingen opslaan"
 
 #: ../../trunk/fws-ajax-contact-form.php:141
 msgid "How to use?"
-msgstr ""
+msgstr "Hoe te gebruiken"
 
 #: ../../trunk/fws-ajax-contact-form.php:142
 msgid "Add the following shortcode into your page. Use the shortcode attribute \"emailsubject\" to overwrite the setting for the mail subject from this page. Enter multiple subject values, divided by \"|\" (pipe) symbols, to create a SELECT menu."
-msgstr ""
+msgstr "Plaats de volgende shortcode in je pagina. Gebruik de eigenschap \"emailsubject\" om de standaard instelling voor het e-mailonderwerp te overschrijven. Wanneer je meerdere waardes opgeeft en deze gescheiden houdt m.b.v. \"|\" (pipe) symbolen, dan maak je automatisch een SELECT menu aan."
 
 #: ../../trunk/fws-ajax-contact-form.php:158
 msgid "Loading..."
-msgstr ""
+msgstr "Laden..."
 
 #: ../../trunk/fws-ajax-contact-form.php:159
 msgid "At least one of the form fields is empty."
-msgstr ""
+msgstr "Tenminste één van de formuliervelden is leeg."
 
 #: ../../trunk/fws-ajax-contact-form.php:160
 #: ../../trunk/fws-ajax-contact-form.php:241
 #: ../../trunk/fws-ajax-contact-form.php:248
 msgid "The entered email address isn't valid."
-msgstr ""
+msgstr "Het ingevoerde e-mailadres is niet geldig."
 
 #: ../../trunk/fws-ajax-contact-form.php:181
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 #: ../../trunk/fws-ajax-contact-form.php:185
 msgid "Email address"
-msgstr ""
+msgstr "E-mailadres"
 
 #: ../../trunk/fws-ajax-contact-form.php:193
 msgid "Subject"
-msgstr ""
+msgstr "E-mailonderwerp"
 
 #: ../../trunk/fws-ajax-contact-form.php:210
 msgid "Message"
-msgstr ""
+msgstr "Bericht"
 
 #: ../../trunk/fws-ajax-contact-form.php:216
 msgid "Submit"
-msgstr ""
+msgstr "Verzenden"
 
 #: ../../trunk/fws-ajax-contact-form.php:239
 #, php-format
 msgid "Invalid email address, did you mean \"%s\""
-msgstr ""
+msgstr "Ongeldig e-mail, bedoel je \"%s\""
 
 #: ../../trunk/fws-ajax-contact-form.php:258
 msgid "All fields are required to enter."
-msgstr ""
+msgstr "Alle velden zijn verplicht in te vullen."
 
 #: ../../trunk/fws-ajax-contact-form.php:261
 msgid "Verification error, try again."
-msgstr ""
+msgstr "Verificatie fout, probeer het opnieuw."
 
 #: ../../trunk/fws-ajax-contact-form.php:277
 #, php-format
 msgid "%1$sIP address: %2$s"
-msgstr ""
+msgstr "%1$sIP adres: %2$s"
 
 #: ../../trunk/fws-ajax-contact-form.php:278
 #, php-format
 msgid "%1$sSender's name: %2$s"
-msgstr ""
+msgstr "%1$sNaam verzender: %2$s"
 
 #: ../../trunk/fws-ajax-contact-form.php:279
 #, php-format
 msgid "%1$sE-mail address: %2$s"
-msgstr ""
+msgstr "%1$sE-mailadres: %2$s"
 
 #: ../../trunk/fws-ajax-contact-form.php:293
 msgid "The script can't send this email message."
-msgstr ""
+msgstr "Het script kan het e-mailbericht niet versturen."
 
+#~ msgid "Error, did you mean"
+#~ msgstr "Fout, bedoel jij"
+
+#~ msgid "The entered mail address is invalid."
+#~ msgstr "Het ingevoerde e-mailadres is niet geldig."
+
+#~ msgid "Error occurred, unable to validate your email address."
+#~ msgstr "Fout, het was niet mogelijk om je e-mailadres te verifiëren."
+
+#~ msgid "Thanks, for the message. We will respond as soon as possible."
+#~ msgstr "Bedankt voor je bericht. Wij zullen snelst mogelijk reageren."
+
+#~ msgid "Some errors occurred."
+#~ msgstr "Er is een fout onstaan."
+
+#~ msgid ""
+#~ "Configure your contact form options below. If you like to change the "
+#~ "(error) messages and/or labels visible via the web form, please use a "
+#~ "localization plugin (f.e. <a href=\"%s\" target=\"_blank\">Codestyling "
+#~ "Localization</a>)."
+#~ msgstr ""
+#~ "De onderstaande opties zijn bedoeld voor de configuratie van "
+#~ "contactformulier. Wanneer je de (fout) meldingen en/of teksten wil "
+#~ "wijzigen, kan dit eenvoudig met de plugin (f.e. <a href=\"%s\" target="
+#~ "\"_blank\">Loco Translations</a>)."
+
+#~ msgid ""
+#~ "Eenter a valid Mailgun API key to use the advanced email address "
+#~ "validation feature. Register a free <a href=\"%s\">Mailgun account</a> to "
+#~ "get your API key."
+#~ msgstr ""
+#~ "Geef een geldige Mailgun API key op om de geavanceerd e-mailadres "
+#~ "validatie in te schakelen. Maak gratis een <a href=\"%s\">Mailgun "
+#~ "account</a> aan om een API key te ontvangen."
+
+#~ msgid "Please enter the Mailgun API key!"
+#~ msgstr "A.u.b. Mailgun API Key invoeren."
